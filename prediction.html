@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/961c028791.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="second_main">
+        <div class="main_1">
+            <div>
+                <h4 class="m-2 head1">Air Quality Analysis</h4>
+            </div>
+            <div class="m-2">
+                <button class="style_but2 mr-3"><a href="{{url_for('home')}}">HOME</a></button>
+                <button class="style_but2"><a href="{{url_for('predict')}}">PREDICT</a></button>
+            </div>
+        </div>
+        <div class="next_main">
+            <form method="POST" action="{{ url_for('predict') }}">
+                <!DOCTYPE html>
+<html>
+<head>
+    <title>Predict Readmission</title>
+</head>
+<body>
+    <h1>Predict Readmission</h1>
+    <form method="POST" action="{{url_for('predict')}}">
+        <label for="discharge_disposition_id">Discharge Disposition ID:</label>
+        <input type="number" name="discharge_disposition_id" required><br>
+
+        <label for="admission_source_id">Admission Source ID:</label>
+        <input type="number" name="admission_source_id" required><br>
+
+        <label for="time_in_hospital">Time in Hospital:</label>
+        <input type="number" name="time_in_hospital" required><br>
+
+        <label for="num_medications">Number of Medications:</label>
+        <input type="number" name="num_medications" required><br>
+
+        <label for="number_emergency">Number of Emergency Visits:</label>
+        <input type="number" name="number_emergency" required><br>
+
+        <label for="number_inpatient">Number of Inpatient Visits:</label>
+        <input type="number" name="number_inpatient" required><br>
+
+        <label for="diag_1">Diagnosis 1:</label>
+        <input type="number" name="diag_1" required><br>
+
+        <label for="diag_2">Diagnosis 2:</label>
+        <input type="number" name="diag_2" required><br>
+
+        <label for="max_glu_serum">Max Glucose Serum:</label>
+        <select name="max_glu_serum" required>
+            <option value="None">None</option>
+            <option value="Norm">Norm</option>
+            <option value=">200">>200</option>
+            <option value=">300">>300</option>
+        </select><br>
+
+        <label for="glimepiride">Glimepiride:</label>
+        <select name="glimepiride" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br>
+
+        <label for="diabetesMed">Diabetes Medication:</label>
+        <select name="diabetesMed" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br>
+
+
+                <button class="style_but mt-3" type="submit">Predict</button>
+            </form>
+            
+            <!-- Display predictions here -->
+            <div>
+                {% if prediction %}
+                <p>{{ prediction }}</p>
+                {% endif %}
+            </div>
+   
+        </div>
+    </div>
+</body>
+</html>
